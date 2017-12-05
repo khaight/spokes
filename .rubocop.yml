@@ -1,0 +1,12 @@
+AllCops:
+  Excludes:
+    - spec/**/*
+Documentation:
+  Enabled: false
+LineLength:
+  Max: 120
+Metrics/MethodLength:
+  CountComments: false
+  Max: 80
+Metrics/AbcSize:
+  Max: 50

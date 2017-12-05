@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# script/test: Run test suite for application. Optionally pass in a path to an
+#              individual test file to run a single test.
+
+set -e
+set -u
+
+export RAILS_ENV="test" RACK_ENV="test"
+PROJECT_NAME='spokes'
+
+[[ "${PROJECT_NAME:-}" ]] || (echo "PROJECT_NAME is required." && exit 1)
+
+# cd to project root
+cd "$(dirname "$0")/.."
+
+# Build deploy Docker image
+docker build --tag=$PROJECT_NAME .
+
+printf "\n===> Running tests ...\n"
+date "+%H:%M:%S"
+
+docker run --rm $PROJECT_NAME bundle exec rspec
