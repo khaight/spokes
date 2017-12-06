@@ -79,18 +79,6 @@ class Application < Rails::Application
 end
 ```
 
-
-#### Installation
-
-Add the following to your Rails project:
-
-```ruby
-# config/application.rb
-class Application < Rails::Application
-    config.middleware.use Spokes::Middleware::OrganizationId
-end
-```
-
 ### Service Name
 
 Requires and validates `Service-Name` header in all requests. Appends the current service's name to all outbound
